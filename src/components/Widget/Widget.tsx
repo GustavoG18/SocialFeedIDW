@@ -28,6 +28,7 @@ const Widget = (props: Props) => {
   return (
     <>
       <FlexContainer
+        height="100%"
       >
         <TweetLists tweets={mock}/>
       </FlexContainer>

@@ -1,4 +1,5 @@
-import { FlexContainer } from '../../lib/common-styles';
+import { Container, Text } from '../../lib/common-styles';
+import { ContainerPost } from './Post.styles';
 
 type Props = {
   date: string;
@@ -10,25 +11,15 @@ const Post = (props: Props) => {
   const { date, authorName, messageBody } = props;
   return (
     <>
-      <FlexContainer
-        height='auto'
-        margin="30px 30px 70px 30px"
-      >
-        <FlexContainer
-          background='white'
-          height='auto'
-          padding='30px'
-        >
-          <p>{messageBody}</p>
-          <span>{authorName}</span>
-        </FlexContainer>
-        <FlexContainer
-          margin="10px 0 0 0"
-          height='auto'
-        >
-          <p>{`Posted: ${date}`}</p>
-        </FlexContainer>
-      </FlexContainer>
+      <ContainerPost>
+        <Container borderRadius='8px' padding='1.563rem 1.875rem 0.625rem 1.875rem' background='white'>
+          <Text fontWeight={500}>{messageBody}</Text>
+          <Text fontWeight={700} color='primary'>{`- ${authorName}`}</Text>
+        </Container>
+        <Container>
+          <Text lineHeight='l6' fontWeight={700} color='white'>{`Posted: ${date}`}</Text>
+        </Container>
+      </ContainerPost>
     </>
   );
 };

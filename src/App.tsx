@@ -1,14 +1,12 @@
-import Widget from "./components/Widget/Widget";
-import { FlexContainer } from "./lib/common-styles";
+import { ThemeProvider } from "styled-components";
+import theme from "./lib/theme";
+import './App.css';
 
 const App = () => {
   return (
     <> 
-      <FlexContainer
-        background="primary"
-      >
-        <Widget feedUrl="" messageBody="" numberOfPost={1}/>
-      </FlexContainer>
+      <ThemeProvider theme={theme}>
+      </ThemeProvider>
     </>
   );
 };

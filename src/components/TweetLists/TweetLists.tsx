@@ -17,8 +17,8 @@ const TweetLists = ({ tweets }: Props) => {
     <>
       <FlexContainer
         background="primary"
-        height="auto"
-        padding="30px"
+        height="100%"
+        padding="1.875rem 0 1.875rem  0"
       >
         {
           tweets.map(({id, ...rest}) => <Post key={id} {...rest}/>)

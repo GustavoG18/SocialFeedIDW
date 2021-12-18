@@ -1,13 +1,12 @@
-import styled  from 'styled-components';
+import styled from "styled-components";
 
-const Container = styled.div`
-  background: #FFFFFF;
-  width: 100%
-  margin: 30px;
-`;
-
-const styles = {
-  Container,
-};
-
-export default styles;
+export const ContainerPost = styled.div`
+  background: ${(props) => props.theme.colors['transparent']};
+  width: 93%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  @media (max-width: 500px) {
+    width: 80%;
+  }
+`
