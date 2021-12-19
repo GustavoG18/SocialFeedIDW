@@ -5,6 +5,6 @@ export const Image = styled.img`
   height: auto;
   @media (max-width: 500px){
     height: 400px;
-    width: 400px;
+    width: auto;
   }
 `;
