@@ -1,3 +1,4 @@
+import Footer from "../../components/Footer/Footer";
 import FirstPage from "./FirstPage/FirstPage";
 import FourthPage from "./FourthPage/FourthPage";
 import SecondPage from "./SecondPage/SecondPage";
@@ -10,6 +11,7 @@ const Home = () => {
       <SecondPage />
       <ThirdPage />
       <FourthPage />
+      <Footer />
     </>
   );
 }
