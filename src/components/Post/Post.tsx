@@ -1,5 +1,6 @@
 import { Container, Text } from '../../lib/common-styles';
 import { ContainerPost } from './Post.styles';
+import moment from 'moment';
 
 type Props = {
   date: string;
@@ -9,6 +10,7 @@ type Props = {
 
 const Post = (props: Props) => {
   const { date, authorName, messageBody } = props;
+  
   return (
     <>
       <ContainerPost>
@@ -17,7 +19,7 @@ const Post = (props: Props) => {
           <Text textAlign='start' margin='10x 0px' fontWeight={700} color='primary'>{`- ${authorName}`}</Text>
         </Container>
         <Container>
-          <Text textAlign='start' margin='10px 0 0 0' lineHeight='l6' fontWeight={700} color='white'>{`Posted: ${date}`}</Text>
+          <Text textAlign='start' margin='10px 0 0 0' lineHeight='l6' fontWeight={700} color='white'>{`Posted: ${moment(date).format('MMMM Do YYYY h:mm')}`}</Text>
         </Container>
       </ContainerPost>
     </>

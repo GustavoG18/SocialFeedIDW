@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import { FlexContainer } from "../../lib/common-styles";
 import TweetLists from "../TweetLists/TweetLists";
+import axios from "axios";
 
 type Props = {
   feedUrl: string;
@@ -7,30 +9,59 @@ type Props = {
   updateInterval: number;
 }
 
-const mock = [{
-  id: 1,
-  messageBody: "Hi new tweeps & old. Hope you're having fun Love the SO, RTs, and likes. Visit my #kindle #author  ebsite:… https://t.co/VZpaywm8eg",
-  authorName: "Gustavo Guerrero",
-  date: "Fri Dec 29 19:15:04"
-},{
-  id: 2,
-  messageBody: "Hi new tweeps & old. Hope you're having fun Love the SO, RTs, and likes. Visit my #kindle #author  ebsite:… https://t.co/VZpaywm8eg",
-  authorName: "Gustavo Guerrero",
-  date: "Fri Dec 29 19:15:04"
-},{
-  id: 3,
-  messageBody: "Hi new tweeps & old. Hope you're having fun Love the SO, RTs, and likes. Visit my #kindle #author  ebsite:… https://t.co/VZpaywm8eg",
-  authorName: "Gustavo Guerrero",
-  date: "Fri Dec 29 19:15:04"
-}];
-
 const Widget = (props: Props) => {
+  const { feedUrl, numberOfPost, updateInterval } = props;
+  const [tweets, setTweets] = useState<any[]>([]);
+  
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    function pullData() {
+      const formData = new FormData();
+      formData.append('limit', `${numberOfPost}`);
+      if(tweets.length !== 0){
+        formData.append('start_id', `${tweets[0]?.id}`);
+      }
+      axios({
+        method: "post",
+        url: feedUrl,
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" },
+      })
+        .then((response) => {
+          console.log(response);
+          setTweets(response.data.map((tweet: any) => {
+            const {
+              entity_id: id, 
+              created_at: date, 
+              user: {name: authorName}, 
+              text: messageBody 
+            } = tweet;
+            return {
+              id,
+              date,
+              authorName,
+              messageBody,
+            }
+          }));
+        })
+        .catch((response) => {
+          console.error(response);
+        });
+        clearInterval(interval);
+      };
+    if(tweets.length === 0){
+      pullData();
+    }else{
+      interval = setInterval(pullData, updateInterval);
+    }
+  }, [feedUrl, numberOfPost, tweets, updateInterval]);
+
   return (
     <>
       <FlexContainer
         height="100%"
       >
-        <TweetLists tweets={mock}/>
+        <TweetLists tweets={tweets}/>
       </FlexContainer>
     </>
   );

@@ -20,7 +20,7 @@ const SecondPage = () => {
         margin='10px 0 0 0'
       >
         <Carousel images={[forbes, times, telegraph, guardian, today]}/>
-        <Widget feedUrl='' updateInterval={0} numberOfPost={0}/>
+        <Widget feedUrl="http://api.massrelevance.com/MassRelDemo/kindle.json" updateInterval={15000} numberOfPost={5}/>
       </FlexContainer>
     </>
   );
@@ -33,9 +33,7 @@ const Carousel = ({images}: CarouselProps) => {
           {
             images.map((image, index) => {
               return (
-                <>
-                  <Image key={`IMG${index}`}  src={image} alt="" />
-                </>
+                <Image key={`IMG${index}`}  src={image} alt="" />
               );
             })
           }
