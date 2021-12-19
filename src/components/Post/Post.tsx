@@ -13,11 +13,11 @@ const Post = (props: Props) => {
     <>
       <ContainerPost>
         <Container borderRadius='8px' padding='1.563rem 1.875rem 0.625rem 1.875rem' background='white'>
-          <Text fontWeight={500}>{messageBody}</Text>
-          <Text fontWeight={700} color='primary'>{`- ${authorName}`}</Text>
+          <Text textAlign='start' fontWeight={500}>{messageBody}</Text>
+          <Text textAlign='start' margin='10x 0px' fontWeight={700} color='primary'>{`- ${authorName}`}</Text>
         </Container>
         <Container>
-          <Text lineHeight='l6' fontWeight={700} color='white'>{`Posted: ${date}`}</Text>
+          <Text textAlign='start' margin='10px 0 0 0' lineHeight='l6' fontWeight={700} color='white'>{`Posted: ${date}`}</Text>
         </Container>
       </ContainerPost>
     </>

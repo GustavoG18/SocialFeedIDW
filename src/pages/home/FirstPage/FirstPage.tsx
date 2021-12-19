@@ -1,5 +1,5 @@
 import { FlexContainer, Title, Text, Button, Container } from "../../../lib/common-styles";
-import { ContainerAdvice, ContainerFirstPage, ContainerHero, ContainerMenu, FlexContainerFirstPage, Logo, TextFirstPage } from "./FirstPage.styles";
+import { ContainerAdvice, ContainerFirstPage, ContainerMenu, FlexContainerFirstPage, Logo, TextFirstPage } from "./FirstPage.styles";
 
 type HeroProps = {
   title: string;

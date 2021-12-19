@@ -4,7 +4,7 @@ import TweetLists from "../TweetLists/TweetLists";
 type Props = {
   feedUrl: string;
   numberOfPost: number;
-  messageBody: string;
+  updateInterval: number;
 }
 
 const mock = [{

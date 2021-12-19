@@ -28,6 +28,7 @@ type TextProps = Partial<{
   lineHeight: LineHeightTypes;
   color: ColorTypes;
   margin: string;
+  textAlign: string;
 }>;
 
 type TitleProps = Partial<{
@@ -88,7 +89,7 @@ export const Text = styled.p<TextProps>`
   @media (max-width: 500px) {
     font-size: ${(props) => props.theme.sizeLetter.text['p3']};
     line-height: ${(props) => props.theme.lineHeight['l4']};
-    text-align: center;
+    text-align: ${(props) => props?.textAlign? props.textAlign: 'center'};
     width: 250px;
   }
 `;

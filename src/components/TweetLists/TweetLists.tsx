@@ -11,8 +11,6 @@ type Props = {
 };
 
 const TweetLists = ({ tweets }: Props) => {
-  
-  // const { feedUrl, numberOfPost, updateInterval } = props;
   return (
     <>
       <FlexContainer

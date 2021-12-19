@@ -1,13 +1,13 @@
 import { ThemeProvider } from "styled-components";
 import theme from "./lib/theme";
 import './App.css';
-import FirstPage from "./pages/home/FirstPage/FirstPage";
+import Home from "./pages/Home/Home";
 
 const App = () => {
   return (
     <> 
       <ThemeProvider theme={theme}>
-        <FirstPage />
+        <Home />
       </ThemeProvider>
     </>
   );
