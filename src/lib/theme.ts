@@ -7,22 +7,25 @@ const theme = {
     white: '#FFFFFF',
     transparent: 'transparent',
     primary: '#6424FF',
+    secondary: '#06F48A'
   },
   sizeLetter: {
     title: {
       t1: '3.125rem',
       t2: '3rem',
       t3: '2.188rem',
+      t4: '1.75rem',
     },
     text: {
       p1: '1.25rem',
       p2: '1.125rem',
       p3: '0.875rem',
       p4: '0.813rem',
+      p5: '0.75rem'
     },
     button:{
-      b1: '2.375rem',
-      b2: '1.25rem',
+      b1: '1.5rem',
+      b2: '1rem',
     }
   },
   weight: {
@@ -41,7 +44,7 @@ const theme = {
     l6: '1.875rem',
     l7: '1.913rem',
     l8: '2.125rem',
-    l9: '2.834rem',
+    l9: '2.363rem',
     l10: '3.281rem',
     l11: '3.859rem',
     l12: '4.05rem',
