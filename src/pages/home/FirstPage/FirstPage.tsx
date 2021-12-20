@@ -28,8 +28,8 @@ const FirstPage = () => {
               START QUIZ
             </Button>
           </ContainerMenu>
-          <RightPart />
           <LeftPart />
+          <RightPart />
         </FlexContainer>
       </Container>
     </>
@@ -62,7 +62,7 @@ const Hero = (props: HeroProps) => {
   );
 }
 
-const RightPart = () => {
+const LeftPart = () => {
   return(
     <>
       <ContainerFirstPage
@@ -80,7 +80,7 @@ const RightPart = () => {
   );
 }
 
-const LeftPart = () => {
+const RightPart = () => {
   return(
     <>
       <ContainerFirstPage

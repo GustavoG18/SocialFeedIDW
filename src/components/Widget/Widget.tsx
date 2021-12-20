@@ -12,7 +12,7 @@ type Props = {
 const Widget = (props: Props) => {
   const { feedUrl, numberOfPost, updateInterval } = props;
   const [tweets, setTweets] = useState<any[]>([]);
-  const interval = useRef<any>(null);
+  const interval = useRef<NodeJS.Timer | null>(null);
 
   useEffect(() => {
     const pullData = async () => {
@@ -43,7 +43,7 @@ const Widget = (props: Props) => {
     }
 
     interval.current = setInterval(pullData, updateInterval);
-    return () => { clearInterval(interval.current) }
+    return () => { interval.current && clearInterval(interval.current)}
 
   }, [feedUrl, numberOfPost, tweets, updateInterval]);
 

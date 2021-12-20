@@ -4,7 +4,7 @@ import telegraph from '../../../assets/palagraph.svg';
 import guardian from '../../../assets/guardian.svg';
 import today from '../../../assets/today.svg';
 import { ContainerImages, Image } from './SecondPage.styles';
-import { FlexContainer } from '../../../lib/common-styles';
+import { Container, FlexContainer } from '../../../lib/common-styles';
 import Widget from '../../../components/Widget/Widget';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
@@ -25,9 +25,9 @@ const SecondPage = () => {
         margin='10px 0 0 0'
       >
         <Carousel images={[forbes, times, telegraph, guardian, today]}/>
-        <div style={{width: '90%'}}>
+        <Container width='90%'>
           <Widget feedUrl="http://api.massrelevance.com/MassRelDemo/kindle.json" updateInterval={updateInterval} numberOfPost={numberOfPost}/>
-        </div>
+        </Container>
       </FlexContainer>
     </>
   );

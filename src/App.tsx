@@ -1,13 +1,16 @@
 import { ThemeProvider } from "styled-components";
 import theme from "./lib/theme";
 import './App.css';
-import Home from "./pages/Home/Home";
+import Router from "./Router/Router";
+import { ToastProvider } from "react-toast-notifications"
 
 const App = () => {
   return (
     <> 
       <ThemeProvider theme={theme}>
-        <Home />
+        <ToastProvider>
+          <Router />
+        </ToastProvider>
       </ThemeProvider>
     </>
   );

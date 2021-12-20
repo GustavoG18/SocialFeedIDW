@@ -45,6 +45,7 @@ type ButtonProps = Partial<{
   width: string;
   height: string;
   fontSize: SizeButtonTypes;
+  margin: string;
 }>;
 
 const CommonFlexProps = css`
@@ -119,5 +120,6 @@ export const Button = styled.button<ButtonProps>`
   padding: 10px 30px;
   border: none;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  margin: ${(props) => props?.margin? props.margin : '0'};
   cursor: pointer;
 `;

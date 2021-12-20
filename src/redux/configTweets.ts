@@ -8,10 +8,10 @@ export const configTweets = createSlice({
   },
   reducers: {
     numberOfPost: (state, action) => {
-      state.numberOfPost = action.payload;
+      state.numberOfPost = parseInt(action.payload);
     },
     updateInterval: (state, action) => {
-      state.updateInterval = action.payload;
+      state.updateInterval = parseInt(action.payload);
     },
   }
 });

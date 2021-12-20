@@ -20,7 +20,6 @@ const FourthPage = () => {
             width="260px"
             height="80px"
             fontSize="b1"
-            style={{display: 'block',position: 'absolute', left: '50%', transform: 'translateY(130%) translateX(-50%)'}}
           >
             START QUIZ
           </Button>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ColorTypes, SizeButtonTypes } from "../../../lib/theme";
+import { ColorTypes, SizeButtonTypes } from "../../lib/theme";
 
 type ButtonProps = Partial<{
   background: ColorTypes;
@@ -7,9 +7,12 @@ type ButtonProps = Partial<{
   width: string;
   height: string;
   fontSize: SizeButtonTypes;
+  margin: string;
 }>;
-
 export const Button = styled.button<ButtonProps>`
+  display:flex;
+  justify-content: center;
+  align-items: center;
   background: ${(props) => props?.background? props.theme.colors[props.background] : props.theme.colors['white']};
   color: ${(props) => props?.color? props.theme.colors[props.color] : props.theme.colors['black']};
   width: ${(props) => props?.width? props.width : 'auto'};
@@ -19,17 +22,6 @@ export const Button = styled.button<ButtonProps>`
   padding: 10px 30px;
   border: none;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  margin: ${(props) => props?.margin? props.margin : '0'};
   cursor: pointer;
-  display: block;
-  position: absolute; 
-  left: 50%; 
-  transform: translateY(130%) translateX(-50%);
-  @media (max-width: 500px){
-    position: relative !important;
-    margin: 20px auto !important;
-    width: 80% !important;
-    height: 70px !important;
-    transform: none !important;
-    left: 0 !important;
-  }
 `;
