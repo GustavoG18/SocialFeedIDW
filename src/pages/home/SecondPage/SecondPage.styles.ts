@@ -17,3 +17,7 @@ export const Image = styled.img`
   margin: auto;
   opacity: 40%;
 `;
+
+export const containerWidget = styled.div`
+  height: auto;
+`

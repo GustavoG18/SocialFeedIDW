@@ -20,7 +20,9 @@ const SecondPage = () => {
         margin='10px 0 0 0'
       >
         <Carousel images={[forbes, times, telegraph, guardian, today]}/>
-        <Widget feedUrl="http://api.massrelevance.com/MassRelDemo/kindle.json" updateInterval={15000} numberOfPost={5}/>
+        <div style={{width: '90%'}}>
+          <Widget feedUrl="http://api.massrelevance.com/MassRelDemo/kindle.json" updateInterval={5000} numberOfPost={5}/>
+        </div>
       </FlexContainer>
     </>
   );

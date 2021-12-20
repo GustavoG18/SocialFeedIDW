@@ -17,6 +17,7 @@ const TweetLists = ({ tweets }: Props) => {
         background="primary"
         height="100%"
         padding="1.875rem 0 1.875rem  0"
+        style={{width: '100%'}}
       >
         {
           tweets.map(({id, ...rest}) => <Post key={id} {...rest}/>)

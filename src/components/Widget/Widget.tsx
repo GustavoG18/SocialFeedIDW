@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FlexContainer } from "../../lib/common-styles";
 import TweetLists from "../TweetLists/TweetLists";
 import axios from "axios";
@@ -12,54 +12,46 @@ type Props = {
 const Widget = (props: Props) => {
   const { feedUrl, numberOfPost, updateInterval } = props;
   const [tweets, setTweets] = useState<any[]>([]);
-  
+  const interval = useRef<any>(null);
+
   useEffect(() => {
-    let interval: NodeJS.Timeout;
-    function pullData() {
-      const formData = new FormData();
-      formData.append('limit', `${numberOfPost}`);
-      if(tweets.length !== 0){
-        formData.append('start_id', `${tweets[0]?.id}`);
+    const pullData = async () => {
+      const params = {
+        limit: numberOfPost,
+        start_id: tweets[0]?.id,
       }
-      axios({
-        method: "post",
-        url: feedUrl,
-        data: formData,
-        headers: { "Content-Type": "multipart/form-data" },
-      })
-        .then((response) => {
-          console.log(response);
-          setTweets(response.data.map((tweet: any) => {
-            const {
-              entity_id: id, 
-              created_at: date, 
-              user: {name: authorName}, 
-              text: messageBody 
-            } = tweet;
-            return {
-              id,
-              date,
-              authorName,
-              messageBody,
-            }
-          }));
-        })
-        .catch((response) => {
-          console.error(response);
-        });
-        clearInterval(interval);
-      };
-    if(tweets.length === 0){
+      const { data } = await axios.get(feedUrl, { params });
+      const dataTweets = data.map((tweet: any) => {
+        const {
+          entity_id: id, 
+          created_at: date, 
+          user: { name: authorName }, 
+          text: messageBody 
+        } = tweet;
+        return {
+          id,
+          date,
+          authorName,
+          messageBody,
+        }
+      }); 
+      setTweets(dataTweets);
+    };
+    
+    if(!interval.current){
       pullData();
-    }else{
-      interval = setInterval(pullData, updateInterval);
     }
+
+    interval.current = setInterval(pullData, updateInterval);
+    return () => { clearInterval(interval.current) }
+
   }, [feedUrl, numberOfPost, tweets, updateInterval]);
 
   return (
     <>
       <FlexContainer
         height="100%"
+        width="100%"
       >
         <TweetLists tweets={tweets}/>
       </FlexContainer>
