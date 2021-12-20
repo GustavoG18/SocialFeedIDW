@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Social Feed
 ## Available Scripts
 
 In the project directory, you can run:
