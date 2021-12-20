@@ -6,12 +6,17 @@ import today from '../../../assets/today.svg';
 import { ContainerImages, Image } from './SecondPage.styles';
 import { FlexContainer } from '../../../lib/common-styles';
 import Widget from '../../../components/Widget/Widget';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../redux/store';
 
 type CarouselProps = {
   images: string[];
 }
 
 const SecondPage = () => {
+
+  const { numberOfPost, updateInterval }= useSelector((state: RootState) => state.configTweets);
+
   return(
     <>
       <FlexContainer
@@ -21,7 +26,7 @@ const SecondPage = () => {
       >
         <Carousel images={[forbes, times, telegraph, guardian, today]}/>
         <div style={{width: '90%'}}>
-          <Widget feedUrl="http://api.massrelevance.com/MassRelDemo/kindle.json" updateInterval={5000} numberOfPost={5}/>
+          <Widget feedUrl="http://api.massrelevance.com/MassRelDemo/kindle.json" updateInterval={updateInterval} numberOfPost={numberOfPost}/>
         </div>
       </FlexContainer>
     </>
